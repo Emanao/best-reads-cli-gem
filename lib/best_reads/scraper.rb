@@ -3,25 +3,25 @@ class BestReads::Scraper
   def self.scrape_best_of_lists
     index_url = "https://www.goodreads.com/list"
     doc = Nokogiri::HTML(open(index_url))
-    lists = []
-    lists = doc.css(".rightContainer .bigBoxContent").first.css("a.listTitle")
-    list_names = lists.collect{|list| list.text}
+    details_lists = []
+    parser_lists = doc.css(".rightContainer .bigBoxContent").first.css("a.listTitle")
+    parser_lists.each do |parser_list|
+      details_lists << {name: parser_list.text, url: parser_list["href"]}
+    end
+    details_lists
+  end
+  def self.scrape_books_by_list(list_url)
+    #list_url_1 = 'https://www.goodreads.com/list/show/1.Best_Books_Ever'
+    #binding.pry
+    doc = Nokogiri::HTML(open(list_url))
+    page_title = doc.css(".mainContentContainer .listPageTitle")
+    book_title = doc.css("#all_votes a.bookTitle span")
+    #puts "Nokogiri: #{doc}"
+    puts "Nokogiri 1: #{page_title.text}"
+    puts "Nokogiri 2: #{book_title.text}"
+
+
 
   end
-  def self.scrape_books_this_month
-    #index_url = "https://www.goodreads.com/list/best_of_month/2017/May?id=108656.Best_books_of_May_2017"
-    #doc = Nokogiri::HTML(open(index_url))
 
-  end
-
-  def self.scrape_best_books_ever
-    # puts "Here is the list for the Best Books ever"
-    # index_url = "https://www.goodreads.com/list/show/1"
-    # doc = Nokogiri::HTML(open(index_url))
-  end
-  def self.scrape_best_books_by_year
-    # puts "Here is a list for the Best Books by year"
-    # index_url = "https://www.goodreads.com/list/best_of_year/2017?id=107026.Best_Books_of_2017"
-    # doc = Nokogiri::HTML(open(index_url))
-  end
 end
