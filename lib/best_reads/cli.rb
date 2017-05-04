@@ -1,18 +1,17 @@
 class BestReads::CLI
   def call
     intro_menu
-    options_menu
+    #options_menu
   end
   def intro_menu
     puts "Welcome to Best Reads!"
-    puts "Here is a list of the best books of May, 2017"
-    BestReads::Scraper.scrape_books_this_month
+    puts "Please choose one of our Best-Of Lists"
 
-  end
-  def options_menu
-    puts "Please select one of our Best-Of Lists"
-    puts "1 - Best Books ever"
-    puts "2 - Best Books by year"
+    best_of_lists =BestReads::Scraper.scrape_best_of_lists
+    best_of_lists.each_with_index do |list, index|
+      puts "#{index+1}. #{list}"
+      BestReads::List.new(list)
+    end
     puts "exit to quit"
     user_input = ""
     while user_input != "exit"
@@ -27,6 +26,9 @@ class BestReads::CLI
         puts "Please enter 1,2 or exit"
       end
     end
+  end
+
+  def options_menu
   end
   def details_menu
   end
