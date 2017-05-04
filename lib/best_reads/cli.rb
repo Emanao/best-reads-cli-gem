@@ -6,7 +6,8 @@ class BestReads::CLI
   def intro_menu
     puts "Welcome to Best Reads!"
     puts "Here is a list of the best books of May, 2017"
-    Scraper.scrape_books_this_month
+    BestReads::Scraper.scrape_books_this_month
+
   end
   def options_menu
     puts "Please select one of our Best-Of Lists"
@@ -19,9 +20,9 @@ class BestReads::CLI
       puts "user_input: #{user_input}"
       case user_input.to_s
       when "1"
-        Scraper.scrape_best_books_ever
+        BestReads::Scraper.scrape_best_books_ever
       when "2"
-        Scraper.scrape_best_books_by_year
+        BestReads::Scraper.scrape_best_books_by_year
       else
         puts "Please enter 1,2 or exit"
       end

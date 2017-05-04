@@ -1,8 +1,5 @@
-require 'nokogiri'
-require 'open-uri'
 class BestReads::Scraper
   def self.scrape_books_this_month
-    https://www.goodreads.com/list/best_of_month/2017/May?id=108656.Best_books_of_May_2017
     index_url = "https://www.goodreads.com/list/best_of_month/2017/May?id=108656.Best_books_of_May_2017"
     doc = Nokogiri::HTML(open(index_url))
 
