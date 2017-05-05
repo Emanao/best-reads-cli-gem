@@ -1,4 +1,5 @@
 class BestReads::CLI
+
   def call
     lists_menu
   end
@@ -6,6 +7,7 @@ class BestReads::CLI
     puts "Welcome to Best Reads!"
     puts "Please choose one of our Best-Of Lists"
 
+    #Scraping best of lists of books, printing them and initializing list objects
     best_of_lists = BestReads::Scraper.scrape_best_of_lists
     best_of_lists.each_with_index do |list, index|
       puts "#{index+1}. #{list[:name].to_s}"
@@ -25,15 +27,14 @@ class BestReads::CLI
   end
 
   def books_by_list_menu(user_input)
-    list_url = "http://www.goodreads.com" + BestReads::List.find_by_index(user_input).url
+    list_url = BestReads::List.find_by_index(user_input).url
     puts "user_input:#{user_input} #{list_url}"
     best_of_books = BestReads::Scraper.scrape_books_by_list(list_url.to_s)
     best_of_books.each_with_index do |book, index|
-      puts "#{index+1}. #{book[:title].to_s}"
-      puts "by #{book[:author].to_s}"
+      puts "#{index+1}. #{book[:title].to_s} by #{book[:author].to_s}"
+      puts "rating: #{book[:rating]}"
       BestReads::Book.new(book)
     end
-
   end
   def details_menu
   end

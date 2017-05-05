@@ -1,5 +1,5 @@
 class BestReads::Book
-  attr_accessor :title, :author, :description
+  attr_accessor :title, :author, :url, :rating
   attr_reader :display
   @@all=[]
   def initialize (book_hash)

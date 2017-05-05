@@ -1,8 +1,7 @@
-require "pry"
+
 class BestReads::Scraper
+  BASE_PATH = "https://www.goodreads.com"
   def self.scrape_best_of_lists
-    index_url = "https://www.goodreads.com/list"
-    doc = Nokogiri::HTML(open(index_url))
     list_details = []
     lists = doc.css(".rightContainer .bigBoxContent").first.css("a.listTitle")
     lists.each do |list|
@@ -10,18 +9,25 @@ class BestReads::Scraper
     end
     list_details
   end
-  def self.scrape_books_by_list(list_url)
-    doc = Nokogiri::HTML(open(list_url))
-    book_details = []
-    page_title = doc.css(".mainContentContainer .listPageTitle")
-    puts "Nokogiri 1: #{page_title.text}"
 
+  def self.scrape_books_by_list(books_url)
+    doc = Nokogiri::HTML(open("#{BASE_PATH}/#{books_url}"))
+    book_details = []
+    #page_title = doc.css(".mainContentContainer .listPageTitle")
     book_table = doc.css("#all_votes tr td[3]")
     book_table.each do |book_detail|
-      book_details << {title: book_detail.css("a.bookTitle span").text, author: book_detail.css("a.authorName").text}
+      title_and_url = book_detail.css("a.bookTitle")
+      book_details << {title: title_and_url.css("span").text,
+                        url: title_and_url.attr("href").text,
+                        author: book_detail.css("a.authorName").text,
+                        rating: book_detail.css("span.minirating").text}
     end
     book_details
 
   end
+  # def self.book_description (book_url)
+  #   doc = Nokogiri::HTML(open(book_url))
+  #   book_description = doc.css(".leftContainer #description span").first.text
+  # end
 
 end
