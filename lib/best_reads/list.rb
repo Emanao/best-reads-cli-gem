@@ -3,8 +3,8 @@ class BestReads::List
   attr_reader :display
   @@all = []
 
-  def initialize(lists_hash)
-    lists_hash.each {|key, value| self.send(("#{key}="),value.strip)}
+  def initialize(list_hash)
+    list_hash.each {|key, value| self.send(("#{key}="),value.strip)}
     self.class.all<<self
   end
   def display
