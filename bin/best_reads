@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
-require "./lib/best_reads"
+
+require_relative "../lib/best_reads"
 BestReads::CLI.new.call

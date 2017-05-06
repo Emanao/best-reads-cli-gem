@@ -9,10 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Eva Navarror'"]
   spec.email         = ["'emanao@me.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.summary       = %q{ List of the best-of books.}
+  spec.description   = %q{ Shows a selection of best-of books depending on a user input.}
+  #spec.homepage      = "Put your gem's website or public repo URL here."
+  #spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

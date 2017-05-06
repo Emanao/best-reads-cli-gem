@@ -11,15 +11,19 @@ class BestReads::List
     end
     self.all
   end
+
   def display_by_index(index)
     puts "#{index+1}. #{self.name}"
   end
+
   def save
     self.class.all<<self
   end
+
   def self.find_by_index(index)
     self.all[index.to_i-1]
   end
+  
   def self.all
     @@all
   end
