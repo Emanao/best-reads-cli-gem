@@ -6,30 +6,22 @@ require 'best_reads/version'
 Gem::Specification.new do |spec|
   spec.name          = "best_reads"
   spec.version       = BestReads::VERSION
-  spec.authors       = ["'Eva Navarror'"]
+  spec.authors       = ["'Eva Navarro'"]
   spec.email         = ["'emanao@me.com'"]
 
-  spec.summary       = %q{ List of the best-of books.}
-  spec.description   = %q{ Shows a selection of best-of books depending on a user input.}
-  #spec.homepage      = "Put your gem's website or public repo URL here."
-  #spec.license       = "MIT"
+  spec.summary       = %q{ Best-of book lists.}
+  spec.description   = %q{ Provides the ranking lists of best books in the us.}
+  spec.homepage      = "https://learn.co"
+  spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
-
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.files         = `git ls-files`.split($\)
+  #spec.bindir        = "exe"
+  spec.executables   = ["best_reads"]
+  spec.require_paths = ["lib","lib/best_reads"]
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 0"
+  spec.add_development_dependency "nokogiri", "~> 0"
+  spec.add_development_dependency "pry", "~> 0"
 end

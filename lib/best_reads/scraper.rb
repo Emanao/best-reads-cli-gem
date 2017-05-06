@@ -1,4 +1,3 @@
-
 class BestReads::Scraper
   BASE_PATH = "https://www.goodreads.com"
   def self.scrape_best_of_lists
@@ -14,7 +13,8 @@ class BestReads::Scraper
   def self.scrape_books_by_list(books_url)
     doc = Nokogiri::HTML(open("#{BASE_PATH}/#{books_url}"))
     book_details = []
-    book_table = doc.css("#all_votes tr td[3]")
+    book_table = doc.css("#all_votes td:nth-child(3)")
+    puts "book_table: #{book_table.size}"
     book_table.each do |book_detail|
       title_and_url = book_detail.css("a.bookTitle")
       book_details << {title: title_and_url.css("span").text,
