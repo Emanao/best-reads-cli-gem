@@ -6,8 +6,8 @@ require 'best_reads/version'
 Gem::Specification.new do |spec|
   spec.name          = "best_reads"
   spec.version       = BestReads::VERSION
-  spec.authors       = ["'Eva Navarro'"]
-  spec.email         = ["'emanao@me.com'"]
+  spec.authors       = ["Eva Navarro"]
+  spec.email         = ["emanao@me.com"]
 
   spec.summary       = %q{ Best-of book lists.}
   spec.description   = %q{ Provides the ranking lists of best books in the us.}
