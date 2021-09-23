@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.executables   = ["best_reads"]
   spec.require_paths = ["lib","lib/best_reads"]
 
-  spec.add_development_dependency "bundler", "~> 1.14"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", ">= 2.2.10"
+  spec.add_development_dependency "rake", ">= 12.3.3"
   spec.add_development_dependency "rspec", "~> 0"
-  spec.add_development_dependency "nokogiri", "~> 0"
+  spec.add_development_dependency "nokogiri", "~> 1.11.4"
   spec.add_development_dependency "pry", "~> 0"
 end
